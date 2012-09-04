@@ -1,0 +1,87 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account_tags %}
+{% load url from future %}
+
+{% block header %}
+    <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
+        $(document).ready(function(){
+           $('#id_password').attr("placeholder","Password");
+        });
+
+    </script>
+
+
+{% endblock %}
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+
+{% block content %}
+
+        <div class="page">
+
+            {% if not user.is_authenticated %}
+
+                {% if socialaccount.providers  %}
+                    <div class="loginMenu">
+                        <p>{% blocktrans with site.name as site_name %}Please sign in with one
+                        of your existing third party accounts. <br> Or,
+                            <a class="btn btn-small btn-inverse"
+                        href="{{ signup_url }}"><i class="icon-edit icon-white"></i> Sign Up</a> for a {{site_name}} account and sign in
+                        below:{% endblocktrans %}</p>
+                    </div>
+
+                    <div class="socialaccount_ballot loginSocial">
+                        <a title="Twitter" class="socialaccount_provider twitter"
+                           href="/accounts/twitter/login/?next=%2F">
+                            <img src="{{ STATIC_URL }}images/twitter-32x32.png">
+                        </a>
+                        <a title="Facebook" class="socialaccount_provider facebook"
+                           href="/accounts/facebook/login/?next=%2F">
+                            <img src="{{ STATIC_URL }}images/facebook-32x32.png">
+                        </a>
+                        <a title="Google" class="socialaccount_provider google"
+                           href="/accounts/google/login/?next=%2F">
+                            <img src="{{ STATIC_URL }}images/google-32x32.png">
+                        </a>
+
+                    </div>
+                    <div class="login-or">
+                        <span class="login-or-text">
+                            or
+                        </span>
+                    </div>
+
+
+                {% endif %}
+            {% endif %}
+
+            <div class="loginMenu">
+
+                <form class="form-inline login" method="POST" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+
+                        {{ form.as_p }}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+                        <a class="secondaryAction" href="{% url 'account_reset_password' %}">
+                            <span class="forgotText">
+                                {% trans "Forgot Password?" %}
+                            </span>
+                        </a>
+                        <button class="btn primaryAction" type="submit">{% trans "Sign In" %}</button>
+                </form>
+
+            </div>
+
+        {% if user.is_authenticated %}
+        {% include "account/snippets/already_logged_in.html" %}
+        {% endif %}
+
+        </div>
+
+
+{% endblock %}
+

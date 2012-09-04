@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block head_title %}{% endblock %}
+{% block head %}
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+
+            $('#labelNumberOfTasks').html($('#numberOfTasks').val());
+        });
+
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class='page'>
+
+        <div class="willDomessage centerElement generalText">
+            {% if future == 0 %}
+                {% if numberOfAddedTask > 0 %}
+                    You were going to do {{ numberOfAddedTask }} tasks on {{ someday }}<br>​
+                {% else %}
+                    You promised nothing, yay!
+                {% endif %}
+            {% else %}
+                    What are you planning to do on {{ someday }} ? <br>
+                    <div class="willDomessage centerElement generalText">
+                    <textarea id="newTask" style=" resize: none; " cols="63" rows="1"></textarea><img src="{{ STATIC_URL }}images/plus.png" onclick="addTask('{{ someday }}')" width="35" height="35">
+                    <div class="errorMessage"> Keep it simple. 100 characters are enough for you. </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="container centerElement">
+        {% if future == 0 and numberOfAddedTask > 0 %}
+
+                <table class="taskTable" id="tasks" >
+
+                    {% for aTask in taskList %}
+                        <tr id='taskID_{{ aTask.pk }}' class="taskItem">
+                            <td class="taskColumn" onmouseover="showMenu({{ aTask.pk }})">
+                                <img id="imageID_{{ aTask.pk }}" src="{{ STATIC_URL }}images/task-icon-{{ aTask.taskClass }}.jpg" width="16" height="16">
+                                <span id="textID_{{ aTask.pk }}" class="taskText_{{ aTask.taskClass }}"> {{ aTask.text }} </span>
+                            </td>
+
+                            <td class="updateMenu">
+                                <img src="{{ STATIC_URL }}images/cross.png" width="16" height="16" onclick = 'markTask({{ aTask.pk }},3)'>
+                                <img src="{{ STATIC_URL }}images/tick.png" width="16" height="16" onclick='markTask({{ aTask.pk }},2)'>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                </table>
+        {% endif %}
+        {% if future == 1 %}
+            <input type="hidden" id="numberOfTasks" name = "numberOfTasks" value="{{ numberOfTasksLeft }}">
+            <table class="taskTable" id="tasks" >
+                {% for aTask in taskList %}
+                    <tr id='taskID_{{ aTask.pk }}' class="taskItem">
+
+                        <td class="taskColumn">
+
+                            <img id="imageID_{{ aTask.pk }}" src="{{ STATIC_URL }}images/task-icon-{{ aTask.taskClass }}.jpg" width="16" height="16">
+                            <span id="textID_{{ aTask.pk }}" class="taskText taskText_{{ aTask.taskClass }}"> {{ aTask.text }} </span>
+                        <td class="updateMenu">
+                            <img src="{{ STATIC_URL }}images/cross.png" width="16" height="16" onclick = 'markTask({{ aTask.pk }},3)'>
+                            <img src="{{ STATIC_URL }}images/tick.png" width="16" height="16" onclick='markTask({{ aTask.pk }},2)'>
+                            <img src="{{ STATIC_URL }}images/minus.png" width="16" height="16" onclick='deleteTask({{ aTask.pk }})'>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+            </table>
+        </div>
+
+            <div class="pageFooter  centerElement generalText">
+
+                <div>You have <label id="labelNumberOfTasks"></label> task left.</div>
+            </div>
+
+            <div class="saveMessage  centerElement generalText">
+
+
+            </div>
+
+        {% endif %}
+
+
+
+    </div>
+{% endblock %}

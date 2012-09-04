@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block head_title %}{% endblock %}
+{% block head %}
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function(){
+            $("#id_randomDay" ).datepicker({ altFormat: '%Y/%m/%d' });
+        });
+        function directLink()
+        {
+            date = $('#id_randomDay').val();
+            if(date.length>0)
+            {
+                $('#id_someday').submit();
+            }
+
+        }
+        $(".generalMenu").click(function(){
+            window.location=$(this).find("a").attr("href");
+            return false;
+        });
+
+
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="page" align="center">
+
+        <div class="menu" >
+            <a class="menuLink menuText" href="/today/" >
+            <span class="btn btn-warning buttonItem">
+                        Today I will...
+            </span>
+            </a>
+        </div>
+
+
+        <div class="menu">
+            <a class="menuLink menuText" href="/yesterday/">
+            <span class="btn btn-warning buttonItem">
+                       Yesterday I was going to...
+            </span>
+            </a>
+        </div>
+
+        <div class="menu" >
+
+            <form class="form-inline" id="id_someday" action="/someday/" method="post" style="display: inline-block;">
+                {% csrf_token %}
+                       <span class="btn btn-warning" onclick="directLink()" >
+                   Time Travel!
+        </span>
+                <div  class="input-append" onclick="">
+                    <input class="input-small" id="id_randomDay" type="text" name="somedayDate">
+                    <span class="add-on"  onclick="directLink()">
+                        <i id="calendar" class="icon-calendar"></i>
+                    </span>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+ {% endblock %}

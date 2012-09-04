@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block head_title %}{% endblock %}
+{% block head %}
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+
+            $('#labelNumberOfTasks').html($('#numberOfTasks').val());
+        });
+
+        function markTask(id,classN)
+        {
+            source = "{{ STATIC_URL }}images/task-icon-";
+            source += classN;
+            source += ".jpg";
+            $('#imageID_'+id).attr("src", source);
+
+            $('#textID_'+id).removeClass();
+            $('#textID_'+id).addClass("taskText_"+classN);
+
+
+            url = "/update_task/";
+
+            data =  {
+                'task_id':id,
+                'task_class':classN
+            };
+            jQuery.ajax(
+                    {
+                        'type': 'GET',
+                        'url': url,
+                        'data': data,
+                        'fail': function(){
+                            alert('failure here!');
+                        },
+                        'success': function(data)
+                        {
+                        }
+                    });
+
+        }
+        function showMenu(id)
+        {
+            $('updateMenu_'+id).style('display = block');
+        }
+
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class='page'>
+
+        <div class="willDomessage centerElement generalText">
+            Yesterday You were going to do {{ numberOfAddedTask }} tasks<br>​
+        </div>
+
+        <div class="container centerElement">
+
+            <table class="taskTable" id="tasks" >
+
+                {% for aTask in taskList %}
+                    <tr id='taskID_{{ aTask.pk }}' class="taskItem">
+                        <td class="taskColumn">
+                            <img id="imageID_{{ aTask.pk }}" src="{{ STATIC_URL }}images/task-icon-{{ aTask.taskClass }}.jpg" width="16" height="16">
+                            <span id="textID_{{ aTask.pk }}" class="taskText taskText_{{ aTask.taskClass }}"> {{ aTask.text }} </span>
+                        </td>
+
+                        <td class="updateMenu">
+                            <img src="{{ STATIC_URL }}images/cross.png" width="16" height="16" onclick = 'markTask({{ aTask.pk }},3)'>
+                            <img src="{{ STATIC_URL }}images/tick.png" width="16" height="16" onclick='markTask({{ aTask.pk }},2)'>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+        <div class="pageFooter  centerElement">
+
+        </div>
+    </div>
+{% endblock %}

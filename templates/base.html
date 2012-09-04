@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>
+        {% block head_title %}{% endblock %}
+    </title>
+    <script src="{{ STATIC_URL }}js/meccid.js"></script>
+    <script type="text/javascript">
+        var uvOptions = {};
+        (function() {
+            var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+            uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/zfaqNUWKSOumyn6OaPihIg.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+        })();
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.23/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap/css/bootstrap.css">
+
+    <link href="{{ STATIC_URL }}css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}css/dropdown/themes/vimeo.com/default.advanced.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/meccid.css" />
+
+    {%block head %}{% endblock %}
+
+</head>
+<body>
+<div class="header">
+    <div class="headerContent">
+    <ul id="nav" class="dropdown dropdown-horizontal">
+        <li class="first"><a href="/">Home</a></li>
+
+        <li style="padding-right: 10px;">
+            <div  class="input-append" style="margin-top: 3px;padding-bottom: 1px;padding-top: 1px">
+
+                <form id='id_searchForm' action="/search/" method="POST">
+                    {% csrf_token %}
+                    <input class="input-small" id="id_searchBox" type="text" name="keyword" placeholder="Search!" style="height: 18px;">
+                    <span class="add-on" style="height: 18px;" onclick="submitSearch()">
+                        <i id="calendar" class="icon-search" ></i>
+                    </span>
+                </form>
+            </div>
+        </li>
+
+        <li class="last"><a href="/accounts/logout/">Logout</a></li>
+
+
+
+    </ul>
+    </div>
+
+</div>
+
+{% block content %}{% endblock %}
+
+    <div  class="footer" >
+        <span class="footerText">
+            a Volkan Cirik Product
+        </span>
+
+
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

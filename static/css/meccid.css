@@ -1,0 +1,321 @@
+html, body {
+    margin:0;
+    padding:0;
+}
+body{
+    background-color: #3C2729;
+    text-align: center;
+}
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #3C2729;
+    width: 100%;
+    heigth: 20px;
+    padding: 10px;
+    z-index: 20;
+}
+.footer {
+    width: 100%;
+    background-color: #3C2729;
+    position: fixed;
+    bottom: 0;
+}
+.footerText{
+    margin-right: 40%;
+    float: right;
+    color: #FAE0E3;
+}
+.header
+{
+    /*position: fixed;*/
+    /*left: 0;*/
+    margin-top: 0;
+    top: 0;
+    background: #3C2729;
+    width: 300px;
+    height: 18px;
+    text-align: center;
+    font-family: verdana, arial;
+    font-size: 70%;
+    font-weight: lighter;
+    margin-left: auto;
+    margin-right: auto;
+}
+.headerContent
+{
+    /*margin-right: 40%;*/
+    /*float: right;*/
+    /*margin-bottom: 0px;*/
+    /*margin-right: auto;*/
+}
+
+ul
+{
+    list-style: none;
+}
+
+.centerElement
+{
+    margin-right: 10%;
+    margin-left: 10%;
+
+    /*padding-left: 50px;*/
+}
+.page
+{
+    background-image:url('../images/paper.jpg');
+    background-repeat:no-repeat;
+    width: 400px;
+    height: 533px;
+
+    margin-bottom: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15px;
+    padding-top: 50px;
+    border-width: 0;
+    z-index: 10;
+
+}
+.willDomessage
+{
+    height: 60px;
+    text-align: center;
+    margin-left: 6%;
+    margin-right: 6%;
+}
+.container
+{
+    height: 300px;
+    margin-top: 10px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-family: verdana, arial;
+    font-size: 70%;
+    font-weight: lighter;
+}
+.saveMessage
+{
+    width: 150px;
+    height: 25px;
+    margin-left: 60%;
+    margin-top: 13%;
+    text-align: right;
+    background-color: #3C2729;
+    color: #FAE0E3;
+}
+.pageFooter
+{
+    height: 30px;
+    /*margin-top: 50px;*/
+    /*padding-bottom: 50px;*/
+    text-align: center;
+}
+.taskItem
+{
+    height: 53px;
+    padding-top: 0;
+    padding-bottom: 0
+    /*margin-top: 10px;*/
+    /*padding-top: 60px;*/
+}
+.taskTable
+{
+    text-align: left;
+    margin-left: 30px;
+}
+.taskText
+{
+    word-wrap: break-word;
+}
+.taskText_2
+{
+ text-decoration: line-through;
+}
+.taskText_3
+{
+    color: gray;
+}
+.taskColumn
+{
+    width: 200px;
+}
+.updateMenu
+{
+    display: none;
+}
+.taskItem:hover .updateMenu{
+    display: block;
+}
+.updateMenu:hover
+{
+    display: block;
+}
+.generalText
+{
+    font-family: arial, verdana;
+    font-size: 80%;
+    font-weight: bolder;
+}
+.errorMessage
+{
+    color: #3C2729;
+    display: none;
+}
+.generalMenu
+{
+    background-color: #3C2729;
+    color: #FAE0E3;
+    width: 300px;
+    height: 80px;
+
+
+    margin-right: auto;
+    margin-left: auto;
+
+    margin-top: 15px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+    /*padding-bottom: 20px;*/
+    text-emphasis: none;
+    /*padding-top: 50px;*/
+}
+.menu
+{
+    /*background-color: #3C2729;*/
+    color: #FAE0E3;
+    width: 300px;
+    height: 80px;
+
+
+    margin-right: auto;
+    margin-left: auto;
+
+    margin-top: 15px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+    /*padding-bottom: 20px;*/
+    text-emphasis: none;
+    /*padding-top: 50px;*/
+}
+a{
+    text-decoration: none;
+}
+a:visited {
+    color: #FAE0E3; text-decoration: none;
+}
+a.menuText {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+}
+.menuText{
+
+}
+#newTask
+{
+    font-family: arial, verdana;
+    font-size: 80%;
+    font-weight: lighter;
+    resize: none;
+}
+.loginMenu
+{
+    /*background-color: #3C2729;*/
+    color: #3C2729;
+    width: 350px;
+    height: 100px;
+	margin-top:10px;
+
+    /*margin-right: 0%;*/
+    /*margin-left: 0%;*/
+    padding-left: 20px;
+    padding-right: 10px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-emphasis: none;
+}
+.loginMenu
+{
+    /*background-color: #3C2729;*/
+    color: #3C2729;
+    width: 350px;
+    height: 100px;
+
+    /*margin-right: 0%;*/
+    /*margin-left: 0%;*/
+    padding-left: 20px;
+    padding-right: 10px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-emphasis: none;
+}
+.login-or
+{
+    margin-top: 1px;
+    text-align:center;
+    width: 282px;
+    border-bottom:2px solid #d5d5d5;
+    margin-left: 60px;
+    height: 10px;
+}
+.login-or-text
+{
+    display:inline-block;
+    position:relative;
+    top:5px;
+    background:#FFFFFF;
+    padding:0 12px;
+}
+.loginSocial
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding-top: 10px;
+    text-align: center;
+    width: 300px;
+    height: 42px;
+}
+.forgotText
+{
+    color: #606060;
+    font-family: arial, verdana;
+    font-size: 80%;
+    font-weight: lighter;
+    resize: none;
+}
+.signupMenu
+{
+    /*background-color: #3C2729;*/
+    color: #3C2729;
+    width: 350px;
+    height: 400px;
+
+    /*margin-right: 0%;*/
+    /*margin-left: 0%;*/
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    text-emphasis: none;
+}
+.signup{
+}
+.searchBox
+{
+    margin-top: 1px;
+    padding-top: 10px;
+}
+.buttonItem
+{
+    width:210px;
+}
